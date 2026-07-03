@@ -1,6 +1,6 @@
 # Artemys: Processamento ETL
 
-Bem-vindo ao repositório de processamento de dados do **Artemys**, uma plataforma de assistência emergencial para pets.
+Bem-vindo ao repositório de processamento de dados da **Artemys**, uma plataforma de assistência emergencial para pets.
 
 ## Sobre o Projeto
 O Artemys é um projeto desenvolvido para auxiliar donos de pets a identificar sintomas e navegar por orientações de saúde de forma rápida e eficiente. 
