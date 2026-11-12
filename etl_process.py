@@ -14,15 +14,18 @@ logging.basicConfig(
 
 # Carrega as variáveis do arquivo .env
 load_dotenv()
-password = os.getenv("DB_PASSWORD")
+DB_SERVER = os.getenv("DB_SERVER")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
-# Configuração da string de conexão Azure
+# Configuração da string de conexão Azure SQL (valores vindos do .env)
 params = (
     "Driver={ODBC Driver 18 for SQL Server};"
-    "Server=tcp:servidor-etl-v5.database.windows.net,1433;"
-    "Database=db_etl_dados;"
-    "Uid=admin_etl;"
-    f"Pwd={password};"
+    f"Server=tcp:{DB_SERVER},1433;"
+    f"Database={DB_NAME};"
+    f"Uid={DB_USER};"
+    f"Pwd={DB_PASSWORD};"
     "Encrypt=yes;"
     "TrustServerCertificate=no;"
     "Connection Timeout=30;"
