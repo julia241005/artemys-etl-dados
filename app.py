@@ -2,28 +2,14 @@ import streamlit as st
 import pandas as pd
 from sqlalchemy import create_engine
 import os
-import urllib.parse
 from dotenv import load_dotenv
 
 # 1. Configuração do ambiente
 load_dotenv()
-DB_SERVER = os.getenv("DB_SERVER")
-DB_NAME = os.getenv("DB_NAME")
-DB_USER = os.getenv("DB_USER")
-DB_PASSWORD = os.getenv("DB_PASSWORD")
+password = os.getenv("DB_PASSWORD")
 
-# Conexão com o Azure SQL (valores vindos do .env)
-params = (
-    "Driver={ODBC Driver 18 for SQL Server};"
-    f"Server=tcp:{DB_SERVER},1433;"
-    f"Database={DB_NAME};"
-    f"Uid={DB_USER};"
-    f"Pwd={DB_PASSWORD};"
-    "Encrypt=yes;"
-    "TrustServerCertificate=no;"
-    "Connection Timeout=30;"
-)
-conn_str = f"mssql+pyodbc:///?odbc_connect={urllib.parse.quote_plus(params)}"
+# String de conexão configurada para o banco Artemys
+conn_str = f"mssql+pyodbc:///?odbc_connect=Driver={{ODBC Driver 18 for SQL Server}};Server=tcp:servidor-etl-v5.database.windows.net,1433;Database=db_etl_dados;Uid=admin_etl;Pwd={password};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
 engine = create_engine(conn_str)
 
 # 2. Configuração da página e Branding
